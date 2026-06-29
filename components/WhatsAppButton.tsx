@@ -7,7 +7,7 @@ type WhatsAppButtonProps = {
 export default function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
   const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\s+/g, '')}`;
 
-  return (
+  return  (
     <a
       href={whatsappUrl}
       target="_blank"
