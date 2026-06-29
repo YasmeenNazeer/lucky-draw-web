@@ -6,10 +6,10 @@
 // their respective modules (lib/googleSheets.ts, proxy.ts).
 
 export const JAZZCASH_PHONE =
-  process.env.NEXT_PUBLIC_JAZZCASH_PHONE ?? '000000000000';
+  process.env.NEXT_PUBLIC_JAZZCASH_PHONE ?? '00000000000000';
 
 export const EASYPAISA_PHONE =
-  process.env.NEXT_PUBLIC_EASYPAISA_PHONE ?? '0000000000000';
+  process.env.NEXT_PUBLIC_EASYPAISA_PHONE ?? '00000000000000';
 
 export const WHATSAPP_PHONE =
   process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? '923308235820';
