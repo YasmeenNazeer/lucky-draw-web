@@ -6,13 +6,13 @@
 // their respective modules (lib/googleSheets.ts, proxy.ts).
 
 export const JAZZCASH_PHONE =
-  process.env.NEXT_PUBLIC_JAZZCASH_PHONE ?? '0300-1234567';
+  process.env.NEXT_PUBLIC_JAZZCASH_PHONE ?? '000000000000';
 
 export const EASYPAISA_PHONE =
-  process.env.NEXT_PUBLIC_EASYPAISA_PHONE ?? '0321-9876543';
+  process.env.NEXT_PUBLIC_EASYPAISA_PHONE ?? '0000000000000';
 
 export const WHATSAPP_PHONE =
-  process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? '923001234567';
+  process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? '923308235820';
 
 // Ticket amount options shown on the home page.
 // Each entry is the display label (e.g. "20 PKR"). Add, remove, or
