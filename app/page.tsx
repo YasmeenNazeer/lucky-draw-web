@@ -220,67 +220,67 @@ export default function Home() {
           </h2>
           <div className="relative">
             {/* Step Cards */}
-            <div className="flex justify-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-x-4">
               {/* Step 1: Select Amount */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full sm:w-auto">
                 <div className="w-14 h-14 mb-4 flex-shrink-0 rounded-xl border-2 border-purple-200 bg-purple-50 flex items-center justify-center">
                   <span className="text-purple-600 text-xl font-bold">1</span>
                 </div>
-                <h3 className="font-medium text-gray-800 mb-2">Select Amount</h3>
+                <h3 className="font-medium text-gray-800 mb-2 text-center sm:text-left">Select Amount</h3>
                 <p className="text-sm text-gray-500 text-center max-w-sm">
                   Choose your entry amount from the options below.
                 </p>
               </div>
 
               {/* Arrow 1 */}
-              <div className="w-4 h-4 mt-10">
+              <div className="w-4 h-4 mt-10 hidden sm:block">
                 <svg className="w-full h-full text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l6 6-6 6"></path>
                 </svg>
               </div>
 
               {/* Step 2: Make Payment */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full sm:w-auto">
                 <div className="w-14 h-14 mb-4 flex-shrink-0 rounded-xl border-2 border-pink-200 bg-pink-50 flex items-center justify-center">
                   <span className="text-pink-600 text-xl font-bold">2</span>
                 </div>
-                <h3 className="font-medium text-gray-800 mb-2">Make Payment</h3>
+                <h3 className="font-medium text-gray-800 mb-2 text-center sm:text-left">Make Payment</h3>
                 <p className="text-sm text-gray-500 text-center max-w-sm">
                   Pay securely via JazzCash or Easypaisa.
                 </p>
               </div>
 
               {/* Arrow 2 */}
-              <div className="w-4 h-4 mt-10">
+              <div className="w-4 h-4 mt-10 hidden sm:block">
                 <svg className="w-full h-full text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l6 6-6 6"></path>
                 </svg>
               </div>
 
               {/* Step 3: Submit Details */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full sm:w-auto">
                 <div className="w-14 h-14 mb-4 flex-shrink-0 rounded-xl border-2 border-orange-200 bg-orange-50 flex items-center justify-center">
                   <span className="text-orange-600 text-xl font-bold">3</span>
                 </div>
-                <h3 className="font-medium text-gray-800 mb-2">Submit Details</h3>
+                <h3 className="font-medium text-gray-800 mb-2 text-center sm:text-left">Submit Details</h3>
                 <p className="text-sm text-gray-500 text-center max-w-sm">
                   Fill in your information to complete your entry.
                 </p>
               </div>
 
               {/* Arrow 3 */}
-              <div className="w-4 h-4 mt-10">
+              <div className="w-4 h-4 mt-10 hidden sm:block">
                 <svg className="w-full h-full text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l6 6-6 6"></path>
                 </svg>
               </div>
 
               {/* Step 4: Wait for Draw */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full sm:w-auto">
                 <div className="w-14 h-14 mb-4 flex-shrink-0 rounded-xl border-2 border-purple-200 bg-purple-50 flex items-center justify-center">
                   <span className="text-purple-600 text-xl font-bold">4</span>
                 </div>
-                <h3 className="font-medium text-gray-800 mb-2">Wait for Draw</h3>
+                <h3 className="font-medium text-gray-800 mb-2 text-center sm:text-left">Wait for Draw</h3>
                 <p className="text-sm text-gray-500 text-center max-w-sm">
                   Sit back and wait for the monthly draw announcement.
                 </p>
