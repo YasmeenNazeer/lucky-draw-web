@@ -1,5 +1,7 @@
 import { getParticipants, getStats } from '@/lib/googleSheets';
 import LogoutButton from '@/components/LogoutButton';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 // Shape of a row returned by getParticipants().
 type Participant = {
@@ -18,6 +20,16 @@ type Stats = {
 };
 
 export default async function AdminPage() {
+  // Check for authentication cookie
+  const cookieStore = await cookies();
+  const authCookie = cookieStore.get('admin_auth');
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+  // If no cookie or password mismatch, redirect to login
+  if (!authCookie || typeof ADMIN_PASSWORD !== 'string' || authCookie.value !== ADMIN_PASSWORD) {
+    return redirect('/admin/login');
+  }
+
   // Explicit types so TypeScript knows what these variables hold
   // after the try/catch resolves.
   let participants: Participant[] = [];
@@ -76,7 +88,7 @@ export default async function AdminPage() {
           </div>
 
           {/* Stats from getStats() function */}
-          <div className="grid gap-6 mb-6 md:grid-cols-2">
+          <div className="grid gap-6 mb-6 px-4 md:px-0 md:grid-cols-2">
             {/* Total Participants Card */}
             <div
               className="relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"

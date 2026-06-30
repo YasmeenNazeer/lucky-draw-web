@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from 'react';
-import AmountCard from '@/components/AmountCard';
-import PaymentCard from '@/components/PaymentCard';
-import { AMOUNT_OPTIONS, WHATSAPP_PHONE } from '@/lib/config';
+import AmountCard from '../components/AmountCard';
+import PaymentCard from '../components/PaymentCard';
+import { AMOUNT_OPTIONS, WHATSAPP_PHONE, JAZZCASH_PHONE, EASYPAISA_PHONE } from '../lib/config';
 
 export default function Home() {
   const [selectedAmount, setSelectedAmount] = useState<string>('');
@@ -24,6 +24,7 @@ export default function Home() {
     minutes: 30,
     seconds: 45
   });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,6 +125,19 @@ export default function Home() {
                 </svg>
               </a>
             </div>
+            <div className="md:hidden">
+              <button id="mobile-menu-button" className="flex items-center p-2 rounded-full text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-md" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-controls="mobile-menu" aria-expanded={isMenuOpen}>
+                <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          {/* Mobile menu: show when button is active */}
+          <div id="mobile-menu" className={isMenuOpen ? 'md:hidden flex flex-col space-y-2 pt-2 pb-3' : 'md:hidden hidden'}>
+            <a href="/admin" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
+              Admin Panel
+            </a>
           </div>
         </div>
       </nav>
@@ -200,12 +214,12 @@ export default function Home() {
           <div className="space-y-6">
             <PaymentCard
               name="JazzCash"
-              phone="0300-1234567"
+              phone={JAZZCASH_PHONE}
               className="border-l-4 border-orange-400 bg-white/70"
             />
             <PaymentCard
               name="Easypaisa"
-              phone="0321-1234567"
+              phone={EASYPAISA_PHONE}
               className="border-l-4 border-emerald-400 bg-white/70"
             />
           </div>

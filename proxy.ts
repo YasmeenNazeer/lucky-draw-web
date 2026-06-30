@@ -7,20 +7,32 @@ import type { NextRequest } from 'next/server';
 // In this proxy, we just check whether that cookie exists and matches the password.
 //
 // /admin/login is exempt so the user can actually see the login form.
+// Also exempt API routes under /api/admin (login, logout, etc.) so they work without the cookie.
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Only protect /admin routes (but let /admin/login through).
-  if (!pathname.startsWith('/admin') || pathname.startsWith('/admin/login')) {
+  // Allow access to API routes under /api/admin (login, logout, etc.)
+  if (pathname.startsWith('/api/admin/')) {
+    return NextResponse.next();
+  }
+
+  // Allow access to the login page
+  if (pathname === '/admin/login') {
+    return NextResponse.next();
+  }
+
+  // Only protect /admin routes (but let /admin/login through via above check).
+  if (!pathname.startsWith('/admin')) {
     return NextResponse.next();
   }
 
   // If the env variable isn't set, fail closed (deny access) and log a warning.
   if (!ADMIN_PASSWORD) {
     console.warn('ADMIN_PASSWORD is not set. /admin is locked.');
+    // Redirect to login without error param for simplicity; login page can show generic error.
     return NextResponse.redirect(new URL('/admin/login', request.url));
   }
 
