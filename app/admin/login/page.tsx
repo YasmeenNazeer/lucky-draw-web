@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -8,6 +9,27 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Check if already logged in (cookie present and correct) on client side
+  useEffect(() => {
+    const getCookie = (name: string): string | null => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) {
+        return parts.pop()?.split(';').shift() || null;
+      }
+      return null;
+    };
+
+    const authCookie = getCookie('admin_auth');
+    const adminPassword = typeof process !== 'undefined' && process.env.ADMIN_PASSWORD;
+
+    // If we have the cookie and it matches the password from env (if available), redirect to dashboard
+    if (authCookie && adminPassword && authCookie === adminPassword) {
+      router.push('/admin');
+      router.refresh();
+    }
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
